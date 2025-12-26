@@ -1,0 +1,420 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+@import "tailwindcss";
+
+@theme {
+  /* Professional Color Palette - Enterprise Grade */
+  --color-background: 222 47% 4%;
+  --color-foreground: 210 40% 98%;
+
+  --color-card: 222 47% 7%;
+  --color-card-foreground: 210 40% 98%;
+
+  --color-primary: 263 70% 50%;
+  --color-primary-foreground: 210 40% 98%;
+
+  --color-secondary: 217 91% 60%;
+  --color-secondary-foreground: 222 47% 11%;
+
+  --color-muted: 217 33% 17%;
+  --color-muted-foreground: 215 20% 65%;
+
+  --color-accent: 263 70% 50%;
+  --color-accent-foreground: 210 40% 98%;
+
+  --color-destructive: 0 84% 60%;
+  --color-destructive-foreground: 210 40% 98%;
+
+  --color-success: 142 76% 36%;
+  --color-success-foreground: 210 40% 98%;
+
+  --color-warning: 38 92% 50%;
+  --color-warning-foreground: 222 47% 11%;
+
+  --color-border: 217 33% 17%;
+  --color-input: 217 33% 17%;
+  --color-ring: 263 70% 50%;
+
+  --radius: 0.75rem;
+
+  /* Animations */
+  --animate-gradient-shift: gradient-shift 3s ease infinite;
+
+  @keyframes gradient-shift {
+
+    0%,
+    100% {
+      background-position: 0% 50%;
+    }
+
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Professional Shadow System */
+.shadow-soft {
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+}
+
+.shadow-card {
+  box-shadow: 0 2px 8px -2px rgb(0 0 0 / 0.1),
+    0 4px 16px -4px rgb(0 0 0 / 0.1);
+}
+
+.shadow-elevated {
+  box-shadow: 0 8px 16px -4px rgb(0 0 0 / 0.2),
+    0 16px 32px -8px rgb(0 0 0 / 0.2);
+}
+
+/* Glass Effect - Professional */
+.glass-card {
+  background: rgba(23, 23, 28, 0.8);
+  backdrop-filter: blur(24px);
+  border: 1px solid rgba(35, 36, 41, 0.5);
+  box-shadow: 0 2px 8px -2px rgb(0 0 0 / 0.1), 0 4px 16px -4px rgb(0 0 0 / 0.1);
+}
+
+/* Gradient Effects */
+.gradient-primary {
+  background: linear-gradient(135deg, hsl(263 70% 50%) 0%, hsl(217 91% 60%) 100%);
+}
+
+.gradient-mesh {
+  background: radial-gradient(at 0% 0%, hsl(263 70% 50% / 0.15) 0px, transparent 50%),
+    radial-gradient(at 100% 0%, hsl(217 91% 60% / 0.15) 0px, transparent 50%),
+    radial-gradient(at 100% 100%, hsl(263 70% 50% / 0.1) 0px, transparent 50%),
+    radial-gradient(at 0% 100%, hsl(217 91% 60% / 0.1) 0px, transparent 50%);
+}
+
+/* Animations */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.5s ease-out;
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.5s ease-out;
+}
+
+/* Custom Scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: hsl(217 33% 17%);
+  border-radius: 9999px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: hsl(215 20% 35%);
+}
+
+/* Status Indicators */
+.status-dot {
+  position: relative;
+  display: flex;
+  height: 0.5rem;
+  width: 0.5rem;
+}
+
+.status-dot-inner {
+  position: absolute;
+  display: inline-flex;
+  height: 100%;
+  width: 100%;
+  border-radius: 9999px;
+  opacity: 0.75;
+}
+
+.status-dot-outer {
+  position: relative;
+  display: inline-flex;
+  border-radius: 9999px;
+  height: 0.5rem;
+  width: 0.5rem;
+}
+
+.status-dot-pulse .status-dot-inner {
+  animation: ping 1.5s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+@keyframes ping {
+
+  75%,
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+/* Professional Card */
+.card {
+  border-radius: var(--radius);
+  background: hsl(var(--color-card));
+  color: hsl(var(--color-card-foreground));
+  box-shadow: 0 2px 8px -2px rgb(0 0 0 / 0.1), 0 4px 16px -4px rgb(0 0 0 / 0.1);
+  border: 1px solid hsl(var(--color-border) / 0.5);
+}
+
+.card-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+  padding: 1.5rem;
+}
+
+.card-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.025em;
+}
+
+.card-description {
+  font-size: 0.875rem;
+  color: hsl(var(--color-muted-foreground));
+}
+
+.card-content {
+  padding: 1.5rem;
+  padding-top: 0;
+}
+
+/* Professional Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px hsl(var(--color-ring));
+}
+
+.btn:disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.btn-primary {
+  background: hsl(var(--color-primary));
+  color: hsl(var(--color-primary-foreground));
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+}
+
+.btn-primary:hover {
+  background: hsl(var(--color-primary) / 0.9);
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+}
+
+.btn-secondary {
+  background: hsl(var(--color-secondary) / 0.1);
+  color: hsl(var(--color-secondary));
+  border: 1px solid hsl(var(--color-secondary) / 0.2);
+}
+
+.btn-secondary:hover {
+  background: hsl(var(--color-secondary) / 0.2);
+}
+
+.btn-ghost:hover {
+  background: hsl(var(--color-accent) / 0.1);
+  color: hsl(var(--color-accent-foreground));
+}
+
+.btn-sm {
+  height: 2.25rem;
+  padding: 0 0.75rem;
+}
+
+.btn-md {
+  height: 2.5rem;
+  padding: 0.5rem 1rem;
+}
+
+.btn-lg {
+  height: 2.75rem;
+  padding: 0 2rem;
+}
+
+/* Professional Badge */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 0.375rem;
+  padding: 0.125rem 0.625rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  transition: colors 0.2s;
+}
+
+.badge-default {
+  background: hsl(var(--color-primary) / 0.1);
+  color: hsl(var(--color-primary));
+  border: 1px solid hsl(var(--color-primary) / 0.2);
+}
+
+.badge-success {
+  background: hsl(var(--color-success) / 0.1);
+  color: hsl(var(--color-success));
+  border: 1px solid hsl(var(--color-success) / 0.2);
+}
+
+.badge-warning {
+  background: hsl(var(--color-warning) / 0.1);
+  color: hsl(var(--color-warning));
+  border: 1px solid hsl(var(--color-warning) / 0.2);
+}
+
+.badge-error {
+  background: hsl(var(--color-destructive) / 0.1);
+  color: hsl(var(--color-destructive));
+  border: 1px solid hsl(var(--color-destructive) / 0.2);
+}
+
+.badge-secondary {
+  background: hsl(var(--color-secondary) / 0.1);
+  color: hsl(var(--color-secondary));
+  border: 1px solid hsl(var(--color-secondary) / 0.2);
+}
+
+/* Professional Input */
+.input {
+  display: flex;
+  height: 2.5rem;
+  width: 100%;
+  border-radius: 0.5rem;
+  border: 1px solid hsl(var(--color-border));
+  background: hsl(var(--color-background));
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  color: hsl(var(--color-foreground));
+  transition: all 0.2s;
+}
+
+.input::placeholder {
+  color: hsl(var(--color-muted-foreground));
+}
+
+.input:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px hsl(var(--color-ring));
+  border-color: transparent;
+}
+
+.input:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.textarea {
+  display: flex;
+  min-height: 5rem;
+  width: 100%;
+  border-radius: 0.5rem;
+  border: 1px solid hsl(var(--color-border));
+  background: hsl(var(--color-background));
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  color: hsl(var(--color-foreground));
+}
+
+.textarea::placeholder {
+  color: hsl(var(--color-muted-foreground));
+}
+
+.textarea:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px hsl(var(--color-ring));
+}
+
+.textarea:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+/* Metric Card */
+.metric-card {
+  border-radius: var(--radius);
+  background: hsl(var(--color-card));
+  color: hsl(var(--color-card-foreground));
+  box-shadow: 0 2px 8px -2px rgb(0 0 0 / 0.1), 0 4px 16px -4px rgb(0 0 0 / 0.1);
+  border: 1px solid hsl(var(--color-border) / 0.5);
+  padding: 1.5rem;
+  transition: all 0.3s;
+}
+
+.metric-card:hover {
+  box-shadow: 0 8px 16px -4px rgb(0 0 0 / 0.2), 0 16px 32px -8px rgb(0 0 0 / 0.2);
+  transform: scale(1.02);
+}
+
+.metric-value {
+  font-size: 1.875rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+}
+
+.metric-label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: hsl(var(--color-muted-foreground));
+}
+
+.metric-change {
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.metric-change-positive {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: hsl(var(--color-success));
+}
+
+.metric-change-negative {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: hsl(var(--color-destructive));
+}

@@ -6,6 +6,9 @@ import { useAuth } from '@/lib/auth/AuthContext';
 import { Sparkles, Mail, Lock, AlertCircle } from 'lucide-react';
 import Link from 'next/link';
 
+export const dynamic = 'force-dynamic';
+
+
 export default function SignInPage() {
     const router = useRouter();
     const { signIn } = useAuth();

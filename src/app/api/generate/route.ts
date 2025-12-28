@@ -24,7 +24,7 @@ export async function POST(request: NextRequest) {
             // Use supervisor agent for orchestrated generation
             const supervisor = getSupervisorAgent();
             const task = await supervisor.delegateContentCreation(
-                { id: 'temp', name: topic, keywords, contentCount: 1, description: '' },
+                { id: 'temp', name: topic, keywords, contentCount: 1, description: '', priority: 1 },
                 contentType,
                 targetAudience || 'general audience'
             );

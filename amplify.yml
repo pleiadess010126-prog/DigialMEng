@@ -3,8 +3,6 @@ frontend:
   phases:
     preBuild:
       commands:
-        - nvm install 18
-        - nvm use 18
         - export NODE_OPTIONS="--max-old-space-size=4096"
         - npm install --omit=dev
     build:

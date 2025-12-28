@@ -4,8 +4,13 @@ import { DynamoDBDocumentClient, PutCommand, GetCommand, QueryCommand, UpdateCom
 import type { Campaign, ContentItem, TopicPillar, RiskAlert } from '@/types';
 
 const client = new DynamoDBClient({
-    region: process.env.AWS_REGION || 'us-east-1',
-    credentials: process.env.AWS_ACCESS_KEY_ID && process.env.AWS_SECRET_ACCESS_KEY
+    region: process.env.CUSTOM_AWS_REGION || process.env.AWS_REGION || 'us-east-1',
+    credentials: process.env.CUSTOM_AWS_ACCESS_KEY_ID && process.env.CUSTOM_AWS_SECRET_ACCESS_KEY
+        ? {
+            accessKeyId: process.env.CUSTOM_AWS_ACCESS_KEY_ID,
+            secretAccessKey: process.env.CUSTOM_AWS_SECRET_ACCESS_KEY,
+        }
+        : process.env.AWS_ACCESS_KEY_ID && process.env.AWS_SECRET_ACCESS_KEY
         ? {
             accessKeyId: process.env.AWS_ACCESS_KEY_ID,
             secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
